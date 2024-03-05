@@ -1,0 +1,26 @@
+﻿@model List<Book>
+<table class="table">
+    <thead>
+        <tr>
+            <th><a href="/book/create">Kitap Ekle</a></th>
+        </tr>
+        <tr>
+            <th>Title</th>
+            <th>Author</th>
+            <th></th>
+
+        </tr>
+
+    </thead>
+    <tbody>
+        @foreach (var book in Model)
+        {
+            <tr>
+                <td><a href="/book/detail/@book.ID">@book.Title</a></td>
+                <td>@book.Author</td>
+                <td><a asp-action="Delete" asp-route-id=@book.ID onclick="return confirm('Silmek istediğine emin misin?')">Sil</a> | Güncelle</td>
+
+            </tr>
+        }
+    </tbody>
+</table>
